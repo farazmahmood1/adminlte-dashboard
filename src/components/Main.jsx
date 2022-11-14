@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { Container, Row, Col } from 'react-grid-system';
 
-
 toast.configure()
 const Main = () => {
 
@@ -24,7 +23,7 @@ const Main = () => {
       })
   }
 
-  useEffect(() => { fetchData() }, [])
+  // useEffect(() => { fetchData() }, [])
 
 
   const postLink = () => {
