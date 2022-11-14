@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
     return (
@@ -34,85 +35,47 @@ const Sidebar = () => {
                     {/* Sidebar Menu */}
                     <nav className="mt-2">
                         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            {/* Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library */}
-                            <li className="nav-item menu-open">
-                                <a href="#" className="nav-link active">
-                                    <i className="nav-icon fas fa-tachometer-alt" />
-                                    <p>
-                                        Starter Pages
-                                        <i className="right fas fa-angle-left" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link active">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Active Page</p>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Inactive Page</p>
-                                        </a>
-                                    </li>
-                                </ul>
+
+                            <li className="nav-item current">
+                                <Link to="/" className="nav-link">
+                                    <i class="fa-solid fa-globe"></i>&nbsp;&nbsp;
+                                    <p>Add your Url</p>
+                                </Link>
                             </li>
-                            <li className="nav-item menu-open">
-                                <a href="#" className="nav-link active">
-                                    <i className="nav-icon fas fa-tachometer-alt" />
-                                    <p>
-                                        Starter Pages
-                                        <i className="right fas fa-angle-left" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link active">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Active Page</p>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Inactive Page</p>
-                                        </a>
-                                    </li>
-                                </ul>
+
+                            <li className="nav-item current">
+                                <Link to="/Demo" className="nav-link">
+                                    <i class="fa-solid fa-chart-simple"></i>&nbsp;&nbsp;
+                                    <p>Statistics</p>
+                                </Link>
                             </li>
-                            <li className="nav-item menu-open">
-                                <a href="#" className="nav-link active">
-                                    <i className="nav-icon fas fa-tachometer-alt" />
-                                    <p>
-                                        Starter Pages
-                                        <i className="right fas fa-angle-left" />
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link active">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Active Page</p>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="far fa-circle nav-icon" />
-                                            <p>Inactive Page</p>
-                                        </a>
-                                    </li>
-                                </ul>
+
+                            <li className="nav-item current">
+                                <Link to="/Demo" className="nav-link">
+                                    <i class="fa-solid fa-book"></i>&nbsp;&nbsp;
+                                    <p>Records</p>
+                                </Link>
                             </li>
-                            <li className="nav-item">
-                                <a href="#" className="nav-link">
-                                    <i className="nav-icon fas fa-th" />
-                                    <p>
-                                        Simple Link
-                                        <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </a>
+
+                            <li className="nav-item current">
+                                <Link to="/Demo" className="nav-link">
+                                    <i class="fa-solid fa-clock-rotate-left"></i>&nbsp;&nbsp;
+                                    <p>History</p>
+                                </Link>
+                            </li>
+
+                            <li className="nav-item current">
+                                <Link to="/Demo" className="nav-link">
+                                    <i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;
+                                    <p>Create users</p>
+                                </Link>
+                            </li>
+
+                            <li className="nav-item current">
+                                <Link to="/Demo" className="nav-link">
+                                    <i class="fa-solid fa-people-roof"></i>&nbsp;&nbsp;
+                                    <p>Manage Staff</p>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
