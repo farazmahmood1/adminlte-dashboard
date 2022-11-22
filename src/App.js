@@ -10,6 +10,8 @@ import React, { useState, useEffect } from 'react';
 import { AsyncStorage } from 'AsyncStorage';
 import Demo from './components/Demo';
 import Login from './components/Auth/Login';
+import ViewProgress from './components/ViewProgress';
+import RightSideBar from './components/Body/RightSideBar';
 
 function App() {
 
@@ -22,7 +24,7 @@ function App() {
       if (parsed !== null) {
         SetLogin(parsed);
       }
-    } 
+    }
     catch {
       return null;
     }
@@ -36,7 +38,7 @@ function App() {
 
   return (
     <div className='wrapper' >
- {
+      {
         login === false ?
 
           <Router>
@@ -53,10 +55,11 @@ function App() {
           <Router>
             <Navbar />
             <Sidebar />
+            <RightSideBar />
             <Routes>
               < Route path='/' element={<Main />} />
               < Route path='/Demo' element={<Demo />} />
-
+              < Route path='/ViewProgress' element={<ViewProgress />} />
 
               < Route path='*' element={<Error />} />
             </Routes>
@@ -65,7 +68,7 @@ function App() {
           </Router>
 
       }
-      </div>
+    </div>
   );
 }
 

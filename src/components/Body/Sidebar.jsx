@@ -44,6 +44,13 @@ const Sidebar = () => {
                             </li>
 
                             <li className="nav-item current">
+                                <Link to="/ViewProgress" className="nav-link">
+                                    <i class="fa-solid fa-spinner"></i>&nbsp;&nbsp;
+                                    <p>View Progress</p>
+                                </Link>
+                            </li>
+
+                            <li className="nav-item current">
                                 <Link to="/Demo" className="nav-link">
                                     <i class="fa-solid fa-chart-simple"></i>&nbsp;&nbsp;
                                     <p>Statistics</p>

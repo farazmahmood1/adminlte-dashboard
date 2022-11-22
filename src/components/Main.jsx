@@ -10,21 +10,6 @@ const Main = () => {
 
   const [link, setLink] = useState('')
   const [userID, setoleID] = useState()
-  const [data, setData] = useState([])
-
-  const fetchData = () => {
-    axios.get('https://digicardapi.alphanitesofts.com/api/fetchurl')
-      .then((res) => {
-        console.log(res)
-        setData(res.data.Url)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-
-  // useEffect(() => { fetchData() }, [])
-
 
   const postLink = () => {
 
@@ -43,6 +28,9 @@ const Main = () => {
         toast.warn('error while uploading link')
       })
   }
+
+
+// sending Link to the progress side 
 
   const SetLocalLogin = async () => {
     try {
@@ -67,7 +55,7 @@ const Main = () => {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1 className="m-0">Starter Page</h1>
+                  <h1 className="m-0">Add Video</h1>
                 </div>
 
               </div>
@@ -91,52 +79,10 @@ const Main = () => {
                     </div>
                   </div>
                 </div>
-                {/* /.col-md-6 */}
               </div>
-              {/* /.row */}
             </div>
-            <div className="row">
-
-              {/* /.col-md-6 */}
-              <div className="col-lg-12">
-                <div className="card card-primary card-outline">
-
-                  <Container>
-                    <Row>
-                      {data.map((item) => {
-                        return (
-                          <Col sm={4}>
-                            <iframe src={`${item.itemName}?autoplay=1&mute=1`}
-                              title="YouTube video player" frameBorder={0}
-                              allow="autoplay"
-                              height={200}
-                              className="p-1"
-                              allowfullscreen="true" />
-                          </Col>
-                        )
-                      })}
-                    </Row>
-                  </Container>
-
-                </div>
-              </div>
-              {/* /.col-md-6 */}
-            </div>
-            {/* /.container-fluid */}
           </div>
-          {/* /.content */}
         </div>
-        {/* /.content-wrapper */}
-        {/* Control Sidebar */}
-        <aside className="control-sidebar control-sidebar-dark">
-          {/* Control sidebar content goes here */}
-          <div className="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-          </div>
-        </aside>
-        {/* /.control-sidebar */}
-        {/* Main Footer */}
 
       </div>
 
