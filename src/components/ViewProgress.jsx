@@ -7,25 +7,29 @@ import { Container, Row, Col } from 'react-grid-system';
 const ViewProgress = () => {
 
 
-    // const columns = ['task', 'category'];
-    // columns.map( (column, index) => {
-    //   let col = column;
-    //   let setCol = column+index;
-    //   [col, setCol] = useState(false)
-    // })
 
     const [data, setData] = useState([])
+    const[getURLID , setURLID] = useState()
 
     const fetchData = () => {
         axios.get('https://digicardapi.alphanitesofts.com/api/fetchurl')
             .then((res) => {
-                console.log(res)
-                setData(res.data.Url)
+                if(res.data.Url[0] === undefined){
+                    setData('no data')
+                }
+                else{
+                    for (let i = 0; i <500 ; i++) {
+                        setData(p=>[...p,res.data.Url[0]])
+                    }
+                }
+               
             })
             .catch((err) => {
                 console.log(err)
             })
     }
+
+    console.log(data)
 
     useEffect(() => { fetchData() }, [])
 
@@ -45,15 +49,20 @@ const ViewProgress = () => {
                     <div className="container-fluid">
                     </div>
                     <div className="row">
-                        <div className="col-lg-12">
-                            <div className="card card-primary card-outline">
+                    {
 
+                    data === "no data"? <h1 className='text-center'>No data found</h1> :
+                        <di className="col-lg-12">
+                            <div className="card card-primary card-outline">
+                           
                                 <Container>
                                     <Row>
-                                        {data.map((item, i) => {
+                                        {   data.map((item, i) => {
                                             return (
+                                                // item === undefined?
+                                                // <p>No data found</p> :
                                                 <Col sm={4} key={i}>
-                                                    <iframe src={`${item.itemName}?autoplay=1&mute=1`}
+                                                    <iframe src={`${item.url}?autoplay=1&mute=1`}
                                                         title="YouTube video player" frameBorder={0}
                                                         allow="autoplay"
                                                         height={200}
@@ -64,9 +73,10 @@ const ViewProgress = () => {
                                         })}
                                     </Row>
                                 </Container>
-
+                                
                             </div>
-                        </div>
+                        </di>
+                            }
                     </div>
                 </div>
             </div>

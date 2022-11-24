@@ -11,8 +11,19 @@ const Main = () => {
   const [link, setLink] = useState('')
   const [userID, setoleID] = useState()
 
+  const SetLocalLogin = async () => {
+    try {
+      let ID = await AsyncStorage.getItem('ID');
+      if (userID !== null) {
+        setoleID(ID)
+      }
+    } catch {
+      return null;
+    }
+  }
+  
   const postLink = () => {
-
+    
     const userObj = {
       user_id: userID,
       url: link
@@ -20,29 +31,26 @@ const Main = () => {
 
     axios.post('https://digicardapi.alphanitesofts.com/api/url', userObj)
       .then((res) => {
-        console.log(res)
         toast.info('Link Posted Successfully')
       })
       .catch((err) => {
-        console.log(err)
         toast.warn('error while uploading link')
       })
   }
 
-
-// sending Link to the progress side 
-
-  const SetLocalLogin = async () => {
-    try {
-      let userID = await AsyncStorage.getItem('ID');
-      if (userID !== null) {
-        setoleID(userID)
-      }
-    } catch {
-      return null;
-    }
-    console.log(userID)
+  const delLink =()=>{
+    axios.post(`https://digicardapi.alphanitesofts.com/api/delete_url/${userID}`)
+    .then((res) => {
+      toast.error('Link Deleted Successfully')
+    })
+    .catch((err) => {
+      toast.warn('error while deleting link')
+    })
   }
+
+  // sending Link to the progress side 
+
+
 
   useEffect(() => { SetLocalLogin() }, [])
 
@@ -75,7 +83,9 @@ const Main = () => {
                         <input type="text" className="form-control " onChange={(e) => setLink(e.target.value)} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
                       </div>
                       <h4 className='mt-2 mb-2'>Paste the embedded Youtube  <i className="fa-brands fa-youtube" />	 link here!</h4>
-                      <button onClick={postLink} className='btn btn-primary btn-lg'>Submit</button>
+                      <button onClick={postLink} className='btn btn-outline-primary btn-lg'>Submit</button>&nbsp;
+                      <button onClick={delLink} className='btn btn-outline-danger btn-lg'>Delete</button>
+
                     </div>
                   </div>
                 </div>

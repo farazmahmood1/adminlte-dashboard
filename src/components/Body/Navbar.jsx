@@ -11,13 +11,12 @@ const Navbar = () => {
         AsyncStorage.setItem('logIN', JSON.stringify(false));
         let login = await AsyncStorage.getItem("logIN")
         let _login = JSON.parse(login)
-        console.log(_login)
         if (_login === false) {
             navigate('/')
 
             setInterval(() => {
                 window.location.reload()
-            }, 1000);
+            }, 2000);
         }
     }
   return (
@@ -28,12 +27,12 @@ const Navbar = () => {
       <li className="nav-item">
         <a className="nav-link" data-widget="pushmenu" href="#" role="button"><i className="fas fa-bars" /></a>
       </li>
-      <li className="nav-item d-none d-sm-inline-block">
+      {/* <li className="nav-item d-none d-sm-inline-block">
         <a href="index3.html" className="nav-link">Home</a>
       </li>
       <li className="nav-item d-none d-sm-inline-block">
         <a href="#" className="nav-link">Contact</a>
-      </li>
+      </li> */}
     </ul>
     {/* Right navbar links */}
     <ul className="navbar-nav ml-auto">
@@ -62,7 +61,7 @@ const Navbar = () => {
       <li className="nav-item dropdown">
                         <a className="nav-link" data-toggle="dropdown" href="#">
                             <i className="fa-solid fa-gears" />
-                            <span className="badge badge-warning navbar-badge">2</span>
+                            {/* <span className="badge badge-warning navbar-badge">2</span> */}
                         </a>
                         <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
@@ -70,11 +69,11 @@ const Navbar = () => {
                                 <i className="fas fa-envelope mr-2" />Account Setting
                             </a> */}
                             <div className="dropdown-divider" />
-                            <a className="dropdown-item" onClick={logOut}>
+                            {/* <a className="dropdown-item" onClick={logOut}>
                                 <i className="fas fa-users mr-2" /> Switch User
-                            </a>
+                            </a> */}
                             <div className="dropdown-divider" />
-                            <a className="dropdown-item" onClick={logOut}>
+                            <a className="dropdown-item" onClick={logOut} style={{cursor:"pointer"}}>
                                 <i className="fa-solid fa-user mr-2" /> Logout
                             </a>
                             <div className="dropdown-divider" />
@@ -82,7 +81,7 @@ const Navbar = () => {
                         </div>
                     </li>
       {/* Notifications Dropdown Menu */}
-      <li className="nav-item dropdown">
+      {/* <li className="nav-item dropdown">
         <a className="nav-link" data-toggle="dropdown" href="#">
           <i className="far fa-bell" />
           <span className="badge badge-warning navbar-badge">15</span>
@@ -107,7 +106,7 @@ const Navbar = () => {
           <div className="dropdown-divider" />
           <a href="#" className="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li> */}
       <li className="nav-item">
         <a className="nav-link" data-widget="fullscreen" href="#" role="button">
           <i className="fas fa-expand-arrows-alt" />

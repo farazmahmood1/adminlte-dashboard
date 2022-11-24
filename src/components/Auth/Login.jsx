@@ -56,7 +56,7 @@ const Login = () => {
             <div className='hold-transition login-page'>
                 <div className="login-box">
                     <div className="login-logo">
-                        <a href="#"><b>Digi</b>CARD</a>
+                        <a href="#"><b>Viewer</b>&nbsp;App</a>
                     </div>
                     {/* /.login-logo */}
                     <div className="card">
