@@ -50,7 +50,7 @@ const Main = () => {
 
   // sending Link to the progress side 
 
-
+// you've to add autoplay=1&mute=1
 
   useEffect(() => { SetLocalLogin() }, [])
 

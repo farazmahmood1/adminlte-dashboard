@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import { AsyncStorage } from 'AsyncStorage'
+import React, { useState, useEffect } from 'react';
+import YouTube from 'react-youtube';
+import ReactPlayer from 'react-player/lazy';
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { Container, Row, Col } from 'react-grid-system';
+
 const ViewProgress = () => {
 
-
-
     const [data, setData] = useState([])
-    const[getURLID , setURLID] = useState()
 
     const fetchData = () => {
         axios.get('https://digicardapi.alphanitesofts.com/api/fetchurl')
             .then((res) => {
-                if(res.data.Url[0] === undefined){
-                    setData('no data')
+                if (res.data.Url[0] === undefined) {
+                    setData([])
+                    
                 }
-                else{
-                    for (let i = 0; i <500 ; i++) {
-                        setData(p=>[...p,res.data.Url[0]])
+                else {
+                    for (let i = 0; i < 100; i++) {
+                        setData(p => [...p, res.data.Url[0]])
                     }
                 }
-               
+
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+
+    const opts = {
+        playerVars: {
+          autoplay: 1,
+          mute:1
+        }
     }
 
     console.log(data)
@@ -49,34 +56,38 @@ const ViewProgress = () => {
                     <div className="container-fluid">
                     </div>
                     <div className="row">
-                    {
 
-                    data === "no data"? <h1 className='text-center'>No data found</h1> :
-                        <di className="col-lg-12">
-                            <div className="card card-primary card-outline">
-                           
-                                <Container>
-                                    <Row>
-                                        {   data.map((item, i) => {
-                                            return (
-                                                // item === undefined?
-                                                // <p>No data found</p> :
-                                                <Col sm={4} key={i}>
-                                                    <iframe src={`${item.url}?autoplay=1&mute=1`}
-                                                        title="YouTube video player" frameBorder={0}
-                                                        allow="autoplay"
-                                                        height={200}
-                                                        className="p-1"
-                                                        allowfullscreen="true" />
-                                                </Col>
-                                            )
-                                        })}
-                                    </Row>
-                                </Container>
-                                
-                            </div>
-                        </di>
-                            }
+                        {/* <div className="gcse-search" /> */}
+
+                        {
+
+                            data.length < 0 ? <h1 className='text-center'>No data found   </h1> :
+                                    <div className="card card-primary card-outline table-responsive">
+
+
+                                            <Row>
+                                                {data.map((item, i) => {
+                                                    return (
+
+                                                        <Col sm={3} key={i}>
+
+                                                            {/* <iframe src={`${item.url}?autoplay=1&mute=1`}
+                                                                title="YouTube video player" frameBorder={0}
+                                                                allow="autoplay"
+                                                                height={200}
+                                                                className="p-1"
+                                                                allowfullscreen="true" /> */}
+                                                                <ReactPlayer url={`${item.url}?autoplay=1&mute=1`}
+                                                               muted={true}
+                                                                ></ReactPlayer>
+
+                                                            {/* <p ><td className='p-4' dangerouslySetInnerHTML={{ __html: item.url }} /></p> */}
+                                                        </Col>
+                                                    )
+                                                })}
+                                            </Row>
+                                    </div>
+                        }
                     </div>
                 </div>
             </div>
