@@ -21,9 +21,9 @@ const Main = () => {
       return null;
     }
   }
-  
+
   const postLink = () => {
-    
+
     const userObj = {
       user_id: userID,
       url: link
@@ -31,26 +31,26 @@ const Main = () => {
 
     axios.post('https://digicardapi.alphanitesofts.com/api/url', userObj)
       .then((res) => {
-        toast.info('Link Posted Successfully')
+        toast.info('Link Posted Successfully', { theme: "dark" })
       })
       .catch((err) => {
         toast.warn('error while uploading link')
       })
   }
 
-  const delLink =()=>{
+  const delLink = () => {
     axios.post(`https://digicardapi.alphanitesofts.com/api/delete_url/${userID}`)
-    .then((res) => {
-      toast.error('Link Deleted Successfully')
-    })
-    .catch((err) => {
-      toast.warn('error while deleting link')
-    })
+      .then((res) => {
+        toast.error('Link Deleted Successfully')
+      })
+      .catch((err) => {
+        toast.warn('error while deleting link')
+      })
   }
 
   // sending Link to the progress side 
 
-// you've to add autoplay=1&mute=1
+  // you've to add autoplay=1&mute=1
 
   useEffect(() => { SetLocalLogin() }, [])
 

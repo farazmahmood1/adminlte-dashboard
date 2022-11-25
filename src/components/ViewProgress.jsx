@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import YouTube from 'react-youtube';
 import ReactPlayer from 'react-player/lazy';
 import axios from 'axios'
-import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { Container, Row, Col } from 'react-grid-system';
 
@@ -15,25 +13,16 @@ const ViewProgress = () => {
             .then((res) => {
                 if (res.data.Url[0] === undefined) {
                     setData([])
-                    
                 }
                 else {
-                    for (let i = 0; i < 100; i++) {
+                    for (let i = 0; i < 10; i++) {
                         setData(p => [...p, res.data.Url[0]])
                     }
                 }
-
             })
             .catch((err) => {
                 console.log(err)
             })
-    }
-
-    const opts = {
-        playerVars: {
-          autoplay: 1,
-          mute:1
-        }
     }
 
     console.log(data)
@@ -57,36 +46,27 @@ const ViewProgress = () => {
                     </div>
                     <div className="row">
 
-                        {/* <div className="gcse-search" /> */}
-
                         {
-
                             data.length < 0 ? <h1 className='text-center'>No data found   </h1> :
-                                    <div className="card card-primary card-outline table-responsive">
+                                <div className="card card-primary card-outline table-responsive">
 
+                                    <Row>
+                                        {data.map((item, i) => {
+                                            return (
 
-                                            <Row>
-                                                {data.map((item, i) => {
-                                                    return (
+                                                <Col sm={4} key={i}>
 
-                                                        <Col sm={3} key={i}>
+                                                    <ReactPlayer
+                                                        playing={true}
+                                                        mute={true}
+                                                        loop={true}
+                                                        url={`${item.url}`} />
 
-                                                            {/* <iframe src={`${item.url}?autoplay=1&mute=1`}
-                                                                title="YouTube video player" frameBorder={0}
-                                                                allow="autoplay"
-                                                                height={200}
-                                                                className="p-1"
-                                                                allowfullscreen="true" /> */}
-                                                                <ReactPlayer url={`${item.url}?autoplay=1&mute=1`}
-                                                               muted={true}
-                                                                ></ReactPlayer>
-
-                                                            {/* <p ><td className='p-4' dangerouslySetInnerHTML={{ __html: item.url }} /></p> */}
-                                                        </Col>
-                                                    )
-                                                })}
-                                            </Row>
-                                    </div>
+                                                </Col>
+                                            )
+                                        })}
+                                    </Row>
+                                </div>
                         }
                     </div>
                 </div>
